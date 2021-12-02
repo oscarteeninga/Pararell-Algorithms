@@ -119,7 +119,7 @@ class Constellation:
                 comm.Recv(result[c*slice_size:(c+1)*slice_size], source=c)
 
             print(str(size) + "\t" + str(cores) + "\t" + str(time.time() - start))
-            # Constellation.check(size, result, Constellation.sequence(constellation))
+            Constellation.check(size, result, Constellation.sequence(constellation))
 
 
 Constellation.parallel(int(sys.argv[1]))

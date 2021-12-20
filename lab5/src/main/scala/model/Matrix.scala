@@ -24,14 +24,20 @@ case class Matrix(m: M) {
 
   def reducedRow(matrix: M, row: Int): (M, Int) = {
     val r = matrix.filter(_._1._1 == row)
-    val min = r.values.min
-    (r.view.mapValues(_ - min).toMap, min)
+    if (r.values.forall(_ > 1000)) (r, 0)
+    else {
+      val min = r.values.min
+      (r.view.mapValues(_ - min).toMap, min)
+    }
   }
 
   def reducedColumn(matrix: M, column: Int): (M, Int) = {
     val c = matrix.filter(_._1._2 == column)
-    val min = c.values.min
-    (c.view.mapValues(_ - min).toMap, min)
+    if (c.values.forall(_ > 1000)) (c, 0)
+    else {
+      val min = c.values.min
+      (c.view.mapValues(_ - min).toMap, min)
+    }
   }
 
   def eliminate(row: Int, column: Int): Matrix = {

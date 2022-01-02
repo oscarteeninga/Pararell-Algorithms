@@ -3,7 +3,7 @@ import numpy as np
 import time
 import sys
 from matplotlib import pyplot as plt
-import tau 
+import taulib.tau
 
 
 def down(x, y, begin, down_slice, matrix):
@@ -114,4 +114,4 @@ def test():
             plt.show()
 
 
-test()
+tau.run(test())

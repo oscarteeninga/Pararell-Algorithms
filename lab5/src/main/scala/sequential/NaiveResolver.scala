@@ -1,4 +1,4 @@
-package resolver
+package sequential
 
 import model.Matrix
 
@@ -14,7 +14,7 @@ case class NaiveResolver(matrix: Matrix) {
     }
   }
 
-  def resolve: (List[Int], Int) = {
+  def resolve: List[Int] = {
     val cities = matrix.columns.tail
     val beginCity = matrix.columns.head
     def resolveAcc(citiesLeft: List[Int], city: Int, cost: Int, path: List[Int]): Unit = {
@@ -26,6 +26,6 @@ case class NaiveResolver(matrix: Matrix) {
       }
     }
     resolveAcc(cities.toList, beginCity, 0, List(beginCity))
-    (path, cost)
+    path
   }
 }

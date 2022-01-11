@@ -3,7 +3,7 @@ import numpy as np
 import time
 import sys
 from matplotlib import pyplot as plt
-import taulib.tau
+import x86_64.lib.tau as tau
 
 
 def down(x, y, begin, down_slice, matrix):

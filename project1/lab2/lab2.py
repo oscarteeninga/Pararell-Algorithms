@@ -1,7 +1,6 @@
 from mpi4py import MPI
 import numpy as np
 import time
-import sys
 from matplotlib import pyplot as plt
 
 

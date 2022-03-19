@@ -38,19 +38,16 @@ case class ParallelResolver(matrix: Matrix, n: Int) {
         (nextCity, newReduced, reduceCost)
       }.filter(_._3 + cost < this.cost).sortBy(_._3).collect {
         case (nextCity, newReduced, reduceCost) =>
-          semaphore.acquire()
-          Await.result(
-            Future {
-              resolveCity(
-                newReduced,
-                citiesLeft.diff(List(nextCity)),
-                nextCity, cost + reduceCost + reduced.m((city, nextCity)),
-                path ++ Set(nextCity)
-              )
-            },
-            Duration(100, SECONDS)
-          )
-          semaphore.release()
+          //          semaphore.acquire()
+          Future {
+            resolveCity(
+              newReduced,
+              citiesLeft.diff(List(nextCity)),
+              nextCity, cost + reduceCost + reduced.m((city, nextCity)),
+              path ++ Set(nextCity)
+            )
+          }
+        //          semaphore.release()
       }
     }
 

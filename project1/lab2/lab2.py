@@ -74,7 +74,7 @@ def test():
     cores = comm.Get_size()
 
     # Const & Variables
-    size = 56  # should be divided by processor count
+    size = 56*2  # should be divided by processor count
     iterations = 100
     tests = 1
     show = 0
